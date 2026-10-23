@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: Bearymail
+## Notes: Помощь в отправке почты твинкам
+## Author: Медведж
+## SavedVariables: BearymailDB
+## Version: 1.16
+## X-Sirus-Update: https://github.com/bearlyfire/Bearymail/tree/master
+## X-Sirus-Category: 12
+
+Bearymail.lua
