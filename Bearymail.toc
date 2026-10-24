@@ -3,7 +3,7 @@
 ## Notes: Помощь в отправке почты твинкам
 ## Author: Медведж
 ## SavedVariables: BearymailDB
-## Version: 1.18
+## Version: 1.19
 ## X-Sirus-Update: https://github.com/bearlyfire/Bearymail/tree/master
 ## X-Sirus-Category: 12
 

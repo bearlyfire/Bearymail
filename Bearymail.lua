@@ -958,7 +958,11 @@ UpdateContentDisplay = function()
     if activeTab == 1 then UpdateCategoriesTab()
     elseif activeTab == 2 then UpdateExceptionsTab()
     elseif activeTab == 3 then UpdateBlacklistTab()
-    elseif activeTab == 4 then UpdateSendTab() end
+    elseif activeTab == 4 then 
+        -- ИСПРАВЛЕНИЕ: Перед отрисовкой 4-й вкладки всегда запускаем актуальный пересчет сумок!
+        ScanBagsForVirtualQueue() 
+        UpdateSendTab() 
+    end
 end
 
 
