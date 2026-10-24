@@ -1,6 +1,6 @@
 # Bearymail
 
-Почтовый аддон Sirus. WOW 3.3.5
+Почтовый аддон Sirus. WOW 3.3.5 c капелькой черной магии автоматизации
 
 ## 🚀 Установка
 1. Перейдите в раздел [Релизы (Releases)](https://github.com/bearlyfire/Bearymail/releases) в правой части этой страницы.
