@@ -40,6 +40,24 @@ local function AssignCategoryToCharacter(category, charName, isChecked)
         end
     end
 end
+
+-- ИСПРАВЛЕНИЕ: функция удаления персонажей
+local function DeleteCharacterData(charName)
+    if not charName then return end
+    for i, name in ipairs(BearymailDB.characters) do
+        if name == charName then 
+            table.remove(BearymailDB.characters, i) 
+            break 
+        end
+    end
+    BearymailDB.blacklists[charName] = nil
+    for cat, char in pairs(BearymailDB.targets) do 
+        if char == charName then BearymailDB.targets[cat] = nil end 
+    end
+    for id, char in pairs(BearymailDB.exceptions) do 
+        if char == charName then BearymailDB.exceptions[id] = nil end 
+    end
+end
 -- Вперед-объявление главной функции обновления экрана для ссылок в коде
 local UpdateContentDisplay
 
