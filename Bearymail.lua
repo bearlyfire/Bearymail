@@ -106,12 +106,12 @@ local function AddItemToExceptions(itemID)
     -- ГЛОБАЛЬНОЕ ПРАВИЛО: Предмет в Исключениях (магнит) может быть только у одного твинка
     local oldOwner = BearymailDB.exceptions[itemID]
     if oldOwner and oldOwner ~= selectedCharacter then
-        ChatMsg(string.format("Предмет %s перенесен в Исключения к %s (раньше магнитил к %s).", itemLink, selectedCharacter, oldOwner))
+        ChatMsg(string.format("Предмет %s перенесен в Магнит к %s (раньше магнитил к %s).", itemLink, selectedCharacter, oldOwner))
     elseif oldOwner == selectedCharacter then
         -- Если уже привязан к текущему, ничего не делаем
         return
     else
-        ChatMsg(string.format("Предмет %s добавлен в Исключения для %s (все будут слать ему).", itemLink, selectedCharacter))
+        ChatMsg(string.format("Предмет %s добавлен в Магнит для %s (все будут слать ему).", itemLink, selectedCharacter))
     end
     
     -- Записываем глобального получателя
@@ -387,7 +387,8 @@ local function UpdateExceptionsTab()
     
     if #list == 0 then
         BearymailScrollFrame:Hide()
-        contentText:SetText("|cff888888Список пуст.\nПеретащите сюда предмет из сумки,\nчтобы добавить исключение.|r")
+        -- ИСПРАВЛЕНО: Текст адаптирован под "Магнит" и автоматически подставляет ник твинка
+        contentText:SetText(string.format("|cff888888Список пуст.\nПеретащите сюда предмет из сумки.\n\nВсе остальные ваши персонажи будут автоматически\nотсылать этот предмет персонажу %s.|r", selectedCharacter or "твинку"))
         contentText:Show()
         return
     end
@@ -468,7 +469,8 @@ local function UpdateBlacklistTab()
     
     if #list == 0 then
         BearymailScrollFrame:Hide()
-        contentText:SetText("|cff888888Черный список пуст.\nПеретащите сюда предмет из сумки,\nчтобы этот персонаж НИКОГДА\nне отправлял его по почте.|r")
+        -- ИСПРАВЛЕНО: Теперь пишется ник конкретного выбранного персонажа
+        contentText:SetText(string.format("|cff888888Черный список пуст.\nПеретащите сюда предмет из сумки,\nчтобы персонаж %s НИКОГДА\nне отправлял его по почте.|r", selectedCharacter or "выбранный"))
         contentText:Show()
         return
     end
@@ -623,7 +625,8 @@ end
 
 -- Пересоздаем систему вкладок (теперь их 4!)
 function CreateTabsSystem()
-    local tabNames = { "Категории", "Исключения", "Черный список", "Рассылка" }
+    -- ИСПРАВЛЕНО: Переименовали вкладку для лучшего понимания игроками
+    local tabNames = { "Категории", "Магнит", "Черный список", "Рассылка" }
     local tabs = {}
     
     for i = 1, 4 do
